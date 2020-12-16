@@ -1,0 +1,782 @@
+/*------------------------------------*\
+#Variables
+\*------------------------------------*/
+
+:root {
+  /* colors */
+  --global-color-alpha-x-light: #5a6c9c;
+  --global-color-alpha-light: #414e70;
+  --global-color-alpha: #2c354d;
+  --global-color-alpha-dark: #1a1f2e;
+
+  --global-color-alpha-transparent: rgba(19, 19, 20, 0.9);
+
+  --global-color-neutral-xx-light: #f2f2f2;
+  --global-color-neutral-x-light: #d6d6d6;
+  --global-color-neutral-light: #a8a8a8;
+  --global-color-neutral: #5b5b5e;
+  --global-color-neutral-dark: #39393b;
+  --global-color-neutral-x-dark: #1e1e1f;
+  --global-color-neutral-xx-dark: #131314;
+
+  --global-color-rating-foreground: #ffbb00;
+  --global-color-rating-background: #9f7500;
+
+  /* global page settings */
+  --global-page-color: var(--global-color-neutral-x-light);
+  --global-page-backgroundColor: var(--global-color-alpha);
+  --global-selection-backgroundColor: var(--global-color-alpha);
+
+  /* Whitespace */
+  --global-baseline: 0.25rem;
+  --global-whitespace-xxs: var(--global-baseline); /* = 4px */
+  --global-whitespace-xs: calc(var(--global-baseline) * 2); /* = 8px */
+  --global-whitespace-sm: calc(var(--global-baseline) * 3); /*  = 12px */
+  --global-whitespace-md: calc(var(--global-baseline) * 4); /*  = 16px */
+  --global-whitespace-lg: calc(var(--global-baseline) * 5); /*  = 20px */
+  --global-whitespace-xl: calc(var(--global-baseline) * 6); /*  = 24px */
+
+  /* border radius */
+  --global-borderWidth: 2px;
+  --global-borderRadius: 4px;
+
+  /* Inputs */
+  --global-input-borderColor: var(--global-color-neutral-light);
+  --global-inputColor: var(--global-color-neutral-xx-dark);
+  --global-input-backgroundColor: white;
+  --global-input-hover-borderColor: var(--global-color-neutral);
+  --global-input-focus-borderColor: var(--global-color-blue);
+  --global-input-boxShadow: 0px 2px 3px rgba(0, 0, 0, 0.05);
+
+  /* transitions */
+  --transition-alpha: 0.1s;
+  --transition-navigation-fade-out: 1s;
+
+  /* errors */
+  --global-color-error: #ff3534;
+  --global-input-error-borderColor: #ff3534;
+  --global-hover-input-error-borderColor: #ffa8a8;
+}
+
+/*------------------------------------*\
+  #GENERIC
+  \*------------------------------------*/
+
+/*
+      Generic: Page
+      ---
+      Global page styles + universal box-sizing:
+  */
+
+html {
+  font-size: 100%;
+  line-height: 1.5;
+  font-family: "Roboto", arial, sans-serif;
+  color: var(--global-page-color);
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--global-page-backgroundColor);
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+/*
+  * Remove text-shadow in selection highlight:
+  * https://twitter.com/miketaylr/status/12228805301
+  *
+  * Customize the background color to match your design.
+  */
+
+::-moz-selection {
+  background: var(--global-selection-backgroundColor);
+  color: white;
+  text-shadow: none;
+}
+
+::selection {
+  background: var(--global-selection-backgroundColor);
+  color: white;
+  text-shadow: none;
+}
+
+/*------------------------------------*\
+  #Elements
+  \*------------------------------------*/
+
+/*
+  Elements: Images
+  ---
+  Default markup for images to make them responsive
+  */
+
+img {
+  max-width: 100%;
+  vertical-align: top;
+}
+
+/*
+      Elements: typography
+      ---
+      Default markup for typographic elements
+  */
+
+h1,
+h2,
+h3 {
+  font-weight: 700;
+}
+
+h1 {
+  font-size: 2.25rem;
+  line-height: calc(var(--global-baseline) * 10);
+  margin: 0 0 var(--global-whitespace-md);
+}
+
+h2 {
+  font-size: 2rem;
+  line-height: calc(var(--global-baseline) * 8);
+  margin: 0 0 var(--global-whitespace-lg);
+}
+
+h3 {
+  font-size: 1.625rem;
+  line-height: calc(var(--global-baseline) * 6);
+  margin: 0 0 var(--global-whitespace-md);
+}
+
+h4,
+h5,
+h6 {
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: calc(var(--global-baseline) * 5);
+  margin: 0 0 var(--global-whitespace-md);
+}
+
+p,
+ol,
+ul,
+dl,
+table,
+address,
+figure {
+  margin: 0 0 var(--global-whitespace-md);
+}
+
+ul,
+ol {
+  padding-left: var(--global-whitespace-xl);
+}
+
+li ul,
+li ol {
+  margin-bottom: 0;
+}
+
+blockquote {
+  font-style: normal;
+  font-size: 1.4375rem;
+  line-height: calc(var(--global-baseline) * 8);
+  margin: 0 0 var(--global-whitespace-xl);
+}
+
+blockquote * {
+  font-size: inherit;
+  line-height: inherit;
+}
+
+figcaption {
+  font-weight: 400;
+  font-size: 0.75rem;
+  line-height: calc(var(--global-baseline) * 4);
+  margin-top: var(--global-whitespace-xs);
+}
+
+hr {
+  border: 0;
+  height: 0.0625rem;
+  background: LightGrey;
+  margin: 0 0 var(--global-whitespace-xl);
+}
+
+a {
+  transition: all var(--transition-alpha);
+  color: var(--global-color-alpha);
+  outline-color: var(--global-color-alpha);
+  outline-width: medium;
+  outline-offset: 0.125rem;
+}
+
+a:visited,
+a:active {
+  color: var(--global-color-alpha);
+}
+
+a:hover,
+a:focus {
+  color: var(--global-color-alpha-light);
+}
+
+label,
+input {
+  display: block;
+}
+
+select {
+  width: 100%;
+}
+
+input::placeholder {
+  color: var(--global-color-neutral-light);
+}
+
+/*------------------------------------*\
+  #OBJECTS
+  \*------------------------------------*/
+
+/*
+      Objects: Row
+      ---
+      Creates a horizontal row that stretches the viewport and adds padding around children
+  */
+
+.o-row {
+  position: relative;
+  padding: var(--global-whitespace-md) var(--global-whitespace-md) 0;
+}
+
+.o-row--card {
+  padding: var(--global-whitespace-md) var(--global-whitespace-xl) 0;
+}
+@media (min-width: 62rem) {
+  .o-row {
+    padding: calc(var(--global-baseline) * 8) calc(var(--global-baseline) * 8) 0;
+  }
+  .o-row--card {
+    padding: var(--global-whitespace-xl) calc(var(--global-baseline) * 8) 0;
+  }
+}
+
+/*
+      Objects: Container
+      ---
+      Creates a horizontal container that sets de global max-width
+  */
+
+.o-container {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 42rem; /* 79.5 * 16px = 1272 */
+  width: 100%;
+}
+
+/*
+      Objects: List
+      ---
+      Small reusable object to remove default list styling from lists
+  */
+
+.o-list {
+  list-style: none;
+  padding: 0;
+}
+
+/*
+      Object: Button reset
+      ---
+      Small button reset object
+  */
+
+.o-button-reset {
+  outline: none;
+  border: none;
+  margin: 0;
+  padding: 0;
+  width: auto;
+  overflow: visible;
+  background: transparent;
+
+  /* inherit font & color from ancestor */
+  color: inherit;
+  font: inherit;
+
+  /* Normalize `line-height`. Cannot be changed from `normal` in Firefox 4+. */
+  line-height: normal;
+
+  /* Corrects font smoothing for webkit */
+  -webkit-font-smoothing: inherit;
+  -moz-osx-font-smoothing: inherit;
+
+  /* Corrects inability to style clickable `input` types in iOS */
+  -webkit-appearance: none;
+}
+
+/*
+      Object: Hide accessible
+      ---
+      Accessibly hide any element
+  */
+
+.o-hide-accessible {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+/*------------------------------------*\
+  #COMPONENTS
+  \*------------------------------------*/
+
+/*
+      Component: Logo
+      ---
+      Website main logo
+  */
+
+.c-logo {
+  display: flex;
+  align-items: center;
+}
+
+.c-logo__icon {
+  width: 1.375rem;
+}
+
+.c-logo__icon--lg {
+  width: 6rem;
+}
+
+.c-logo__text {
+  margin-left: var(--global-whitespace-xs);
+}
+
+.c-logo__text--lg {
+  font-size: 2.625rem;
+  line-height: 2.625rem;
+  text-align: center;
+
+  margin-left: var(--global-whitespace-xs);
+}
+
+@media (min-width: 62rem) {
+  .c-logo__text {
+    font-size: 1.25rem;
+  }
+  .c-logo__text--lg {
+    font-size: 2.625rem;
+  }
+}
+
+/*
+    Component: Input
+    ---
+    Class to put on all input="text" like form inputs
+*/
+
+.c-input {
+  --input-transition: all var(--global-transitionDuration-alpha) var(--global-transitionEasing-out);
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: 100%;
+  border-radius: var(--global-borderRadius);
+  border: var(--global-borderWidth) solid var(--global-input-borderColor);
+  background-color: white;
+  color: var(--global-color-neutral-x-dark);
+  font-family: inherit;
+  font-size: 1rem;
+  line-height: calc(var(--global-baseline) * 3);
+  padding: calc(var(--global-baseline) * 3 - var(--global-borderWidth)) var(--global-whitespace-md);
+  outline: none;
+  transition: var(--input-transition);
+}
+
+.c-input:hover {
+  border-color: var(--global-input-hover-borderColor);
+}
+
+.c-input:focus,
+.c-input:active {
+  border-color: var(--global-input-focus-borderColor);
+  box-shadow: var(--global-input-focus-boxShadowSpread) var(--global-input-focus-boxShadowColor);
+}
+
+.c-input--textarea {
+  resize: vertical;
+}
+
+/* option input for checkboxes and radio buttons */
+
+.c-option {
+  margin-right: var(--global-whitespace-sm);
+}
+
+/*
+    Component: Label
+    ---
+    Class to put on all form labels
+*/
+
+.c-label {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0;
+  font-size: 1rem;
+  padding-bottom: var(--global-whitespace-xss);
+  line-height: 1.5rem;
+  color: var(--global-label-color);
+}
+
+.c-label--option {
+  padding-bottom: 0;
+}
+
+.c-label__error-message {
+  display: none;
+  font-weight: bold;
+  color: var(--global-color-error);
+}
+
+.has-error .c-label__error-message {
+  display: block;
+}
+
+/*
+    Component: Button
+    ---
+    Class to put on form buttons or
+*/
+
+.c-button {
+  --button-color: #2952ce;
+  --button-hover-color: #4a77ff;
+  font-size: 1.125;
+  font-weight: 400;
+  border-radius: var(--global-borderRadius);
+  background-color: var(--button-color);
+  color: #fff;
+  padding: calc(var(--global-baseline) * 2.5);
+  line-height: calc(var(--global-baseline) * 3);
+  width: 100%;
+  outline: none;
+  box-shadow: var(--button-boxShadow, 0);
+  transition: all var(--global-transitionDuration-alpha) var(--global-transitionEasing-out);
+}
+
+.c-button:hover {
+  background-color: var(--button-hover-color);
+}
+
+.c-button:focus {
+  box-shadow: var(--global-input-focus-boxShadowSpread)
+    var(--input-focus-boxShadowColor, var(--global-input-focus-boxShadowColor));
+}
+
+.c-button:active {
+  box-shadow: var(--global-input-focus-boxShadowSpread)
+    var(--input-focus-boxShadowColor, var(--global-input-focus-boxShadowColor));
+}
+
+/*
+      Component: Landing page
+      ---
+      Landing page style
+  */
+
+.c-landing-page {
+  padding: calc(var(--global-whitespace-md) * 2) var(--global-whitespace-md);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.c-landing-page__header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: calc(var(--global-baseline) * 8);
+}
+
+.c-landing-page__body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.c-landing-page__text-content {
+  width: 20.5rem;
+}
+
+.c-landing-page__title {
+  font-weight: 400;
+  font-size: 2rem;
+  line-height: 3rem;
+  margin-bottom: var(--global-whitespace-md);
+}
+
+@media (min-width: 48rem) {
+  .c-landing-page__body {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+/*
+      Component: Mockup
+      ---
+      Mockup styles
+  */
+
+.c-mockup {
+  width: 13.8125rem;
+  margin-bottom: var(--global-whitespace-xl);
+}
+
+@media (min-width: 48rem) {
+  .c-mockup {
+    width: 17.9375rem;
+    margin-bottom: 0;
+  }
+}
+
+/*------------------------------------*\
+  #UTILITIES
+  \*------------------------------------*/
+
+/*
+      Utilities: color
+      ---
+      Utility classes to put specific colors onto elements
+  */
+
+.u-color-neutral {
+  color: var(--global-color-neutral);
+}
+
+.u-color-neutral-dark {
+  color: var(--global-color-neutral-dark);
+}
+
+.u-color-white {
+  color: white;
+}
+
+.u-color-rating {
+  color: var(--global-color-rating-foreground);
+}
+
+/*
+      Utilities: spacing
+      ---
+      Utility classes to put specific margins and paddings onto elements
+  */
+
+.u-pt-clear {
+  padding-top: 0 !important;
+}
+
+.u-pb-xl {
+  padding-bottom: var(--global-whitespace-xl) !important;
+}
+
+.u-mb-clear {
+  margin-bottom: 0 !important;
+}
+
+.u-mb-xxs {
+  margin-bottom: var(--global-whitespace-xxs) !important;
+}
+
+.u-mb-xs {
+  margin-bottom: var(--global-whitespace-xs) !important;
+}
+
+.u-mb-sm {
+  margin-bottom: var(--global-whitespace-sm) !important;
+}
+
+.u-mb-md {
+  margin-bottom: var(--global-whitespace-md) !important;
+}
+
+.u-mb-lg {
+  margin-bottom: var(--global-whitespace-lg) !important;
+}
+
+.u-mb-xl {
+  margin-bottom: var(--global-whitespace-xl) !important;
+}
+
+.u-mb-2xl {
+  margin-bottom: calc(var(--global-whitespace-xl) * 2) !important;
+}
+
+/*
+      Utilities: max-width
+      ---
+      Utility classes to put specific max widths onto elements
+  */
+
+.u-max-width-xs {
+  max-width: 27em !important;
+}
+
+.u-max-width-sm {
+  max-width: 39em !important;
+}
+
+.u-max-width-md {
+  max-width: 50em !important;
+}
+
+.u-max-width-lg {
+  max-width: 63.5em !important;
+}
+
+.u-max-width-none {
+  max-width: none !important;
+}
+
+/*
+      Utilities: align
+      ---
+      Utility classes align text or components
+  */
+
+.u-align-text-center {
+  text-align: center;
+}
+
+.u-align-center {
+  margin: 0 auto;
+}
+
+/*
+      Utilities: text
+      Utility classes to create smaller or bigger test
+  */
+
+.u-text-sm {
+  font-size: 0.875rem;
+}
+
+/*
+      Utilities: font weight
+      Utility classes to change the font weight
+*/
+
+.u-weight-thin {
+  font-weight: 100;
+}
+
+/*------------------------------------*\
+  #MEDIA
+  \*------------------------------------*/
+
+/*
+      Media Queries
+      ---
+      EXAMPLE Media Queries for Responsive Design.
+      These examples override the primary ('mobile first') styles.
+      USE THEM INLINE!
+  */
+
+/* Extra small devices (portrait phones, less than 576px)
+  No media query since this is the default in mobile first design
+  */
+
+/* Small devices (landscape phones, 576px and up)
+  @media (min-width: 576px) {}
+  */
+
+/* Medium devices (tablets, 768px and up)
+  @media (min-width: 768px) {}
+  */
+
+/* Large devices (landscape tablets, desktops, 992px and up)
+  @media (min-width: 992px) {}
+  */
+
+/* Extra large devices (large desktops, 1200px and up)
+  @media (min-width: 1200px) {}
+  */
+
+/*
+      Print styles.
+      ---
+      Inlined to avoid the additional HTTP request:
+      http://www.phpied.com/delay-loading-your-print-css/
+  */
+
+@media print {
+  *,
+  *:before,
+  *:after {
+    background: transparent !important;
+    color: #000 !important;
+    /* Black prints faster:
+          http://www.sanbeiji.com/archives/953 */
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+  a,
+  a:visited {
+    text-decoration: underline;
+  }
+  a[href]:after {
+    content: " (" attr(href) ")";
+  }
+  abbr[title]:after {
+    content: " (" attr(title) ")";
+  }
+  /*
+      * Don't show links that are fragment identifiers,
+      * or use the `javascript:` pseudo protocol
+      */
+  a[href^="#"]:after,
+  a[href^="javascript:"]:after {
+    content: "";
+  }
+  pre {
+    white-space: pre-wrap !important;
+  }
+  pre,
+  blockquote {
+    border: 1px solid #999;
+    page-break-inside: avoid;
+  }
+  /*
+      * Printing Tables:
+      * http://css-discuss.incutio.com/wiki/Printing_Tables
+      */
+  thead {
+    display: table-header-group;
+  }
+  tr,
+  img {
+    page-break-inside: avoid;
+  }
+  p,
+  h2,
+  h3 {
+    orphans: 3;
+    widows: 3;
+  }
+  h2,
+  h3 {
+    page-break-after: avoid;
+  }
+}
