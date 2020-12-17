@@ -41,12 +41,13 @@
   --global-borderRadius: 4px;
 
   /* Inputs */
-  --global-input-borderColor: var(--global-color-neutral-light);
+  --global-input-borderColor: var(--global-color-neutral-x-light);
   --global-inputColor: var(--global-color-neutral-xx-dark);
   --global-input-backgroundColor: white;
-  --global-input-hover-borderColor: var(--global-color-neutral);
-  --global-input-focus-borderColor: var(--global-color-blue);
+  --global-input-hover-borderColor: var(--global-color-neutral-light);
+  --global-input-focus-borderColor: var(--global-color-neutral);
   --global-input-boxShadow: 0px 2px 3px rgba(0, 0, 0, 0.05);
+  --global-input-focus-boxShadowSpread: 0 0 0 3px;
 
   /* transitions */
   --transition-alpha: 0.1s;
@@ -460,6 +461,8 @@ input::placeholder {
 .c-button {
   --button-color: #2952ce;
   --button-hover-color: #4a77ff;
+  --button-focus-boxShadowSpread: var(--global-input-focus-boxShadowSpread);
+  --button-focus-boxShadowColor: rgba(74, 119, 255, 0.7);
   font-size: 1.125;
   font-weight: 400;
   border-radius: var(--global-borderRadius);
@@ -469,7 +472,6 @@ input::placeholder {
   line-height: calc(var(--global-baseline) * 3);
   width: 100%;
   outline: none;
-  box-shadow: var(--button-boxShadow, 0);
   transition: all var(--global-transitionDuration-alpha) var(--global-transitionEasing-out);
 }
 
@@ -478,13 +480,11 @@ input::placeholder {
 }
 
 .c-button:focus {
-  box-shadow: var(--global-input-focus-boxShadowSpread)
-    var(--input-focus-boxShadowColor, var(--global-input-focus-boxShadowColor));
+  box-shadow: var(--button-focus-boxShadowSpread) var(--button-focus-boxShadowColor);
 }
 
 .c-button:active {
-  box-shadow: var(--global-input-focus-boxShadowSpread)
-    var(--input-focus-boxShadowColor, var(--global-input-focus-boxShadowColor));
+  box-shadow: var(--button-focus-boxShadowSpread) var(--global-input-focus-boxShadowColor);
 }
 
 /*
